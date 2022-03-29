@@ -1,11 +1,4 @@
-
-import Directory from "./components/directory/directory.component.jsx";
-
-
-const App = () => {
-
-
-  const categories = [
+[
     {
       "id": 1,
       "title": "hats",
@@ -31,15 +24,5 @@ const App = () => {
       "title": "mens",
       "imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
     }
-  ];
-
-
-
-  return (
-    <div className="App">
-     <Directory categories = {categories}/>
-  </div>
-  );
-}
-
-export default App;
+  ]
+  
