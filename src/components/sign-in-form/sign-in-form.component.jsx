@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import {
   signInWithGooglePopup,
@@ -24,13 +24,12 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async (event) => {
-    const { user } = await signInWithGooglePopup();
-    const userDocref = await createUserDocumentFromAuth(user);
-    alert(`Welcome back ${user.displayName}!`);
+    event.preventDefault();
+    await signInWithGooglePopup();
   };
   const logGitHubUser = async (event) => {
-    const { user } = await signInWithGitHubPopup();
-    const userDocref = await createUserDocumentFromAuth(user);
+    event.preventDefault();
+    await signInWithGitHubPopup();
   };
 
   const handleChange = (event) => {
@@ -41,14 +40,8 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInWithEmailAndPasswordForm(email, password);
-      console.log(response);
-      const { user } = response;
-      const userDocref = await createUserDocumentFromAuth(user);
+      await signInWithEmailAndPasswordForm(email, password);
       resetFormFields();
-      alert(`Welcome back ${user.displayName}!`);
-
-      //Proceed from here to handle token from email authentication
     } catch (error) {
       console.log(error);
       switch (error.code) {

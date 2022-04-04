@@ -1,4 +1,3 @@
-import { isReactNative } from "@firebase/util";
 import { useState } from "react";
 
 import {
@@ -10,14 +9,14 @@ import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import "../sign-up-form/sign-up-form.styles.scss";
 
-const defaultFormFields = {
-  displayName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-};
-
 const SignUpForm = () => {
+  const defaultFormFields = {
+    displayName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
+
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -38,7 +37,7 @@ const SignUpForm = () => {
         email,
         password
       );
-      const userDocRef = await createUserDocumentFromAuth(user, {
+      await createUserDocumentFromAuth(user, {
         displayName,
       });
       resetFormFields();

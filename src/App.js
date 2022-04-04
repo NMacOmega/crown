@@ -4,6 +4,8 @@ import Home from "./routes/home/home.component";
 import Authentication from "./routes/authentication/authentication.component";
 
 const App = () => {
+  // const [userToken, setUserToken] = useContext({});
+
   const Shop = () => {
     return <h1>I am the shop</h1>;
   };
