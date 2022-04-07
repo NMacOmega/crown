@@ -20,17 +20,12 @@ export const ImageContainer = styled.div`
   }
 `;
 
-export const Name = styled.span`
+export const BaseSpan = styled.span`
   width: 23%;
 `;
 
-export const Quantity = styled.span`
-  width: 23%;
+export const Quantity = styled(BaseSpan)`
   display: flex;
-`;
-
-export const Price = styled.span`
-  width: 23%;
 `;
 
 export const Arrow = styled.div`

@@ -4,9 +4,8 @@ import { CartContext } from "../../contexts/cart.context";
 import {
   CheckoutItemContainer,
   ImageContainer,
-  Name,
+  BaseSpan,
   Quantity,
-  Price,
   Arrow,
   Value,
   RemoveButton,
@@ -33,7 +32,7 @@ const CheckoutItem = ({ cartItem }) => {
       <ImageContainer>
         <img src={`${imageUrl}`} alt={`${name}`} />
       </ImageContainer>
-      <Name>{name}</Name>
+      <BaseSpan>{name}</BaseSpan>
 
       <Quantity>
         <Arrow onClick={onRemoveProduct}>&#10094;</Arrow>
@@ -41,7 +40,7 @@ const CheckoutItem = ({ cartItem }) => {
         <Arrow onClick={onAddProduct}>&#10095;</Arrow>
       </Quantity>
 
-      <Price>{price}</Price>
+      <BaseSpan>{price}</BaseSpan>
       <RemoveButton onClick={onDeleteProduct}>&#10005;</RemoveButton>
     </CheckoutItemContainer>
   );
