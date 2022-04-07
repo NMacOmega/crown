@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import {
   signInWithGooglePopup,
-  signInWithGitHubPopup,
-  createUserDocumentFromAuth,
-  signInWithGoogleRedirect,
+  // signInWithGitHubPopup,
+  // signInWithGoogleRedirect,
   signInWithEmailAndPasswordForm,
 } from "../../utils/firebase/firebase.utils";
 
@@ -27,10 +26,10 @@ const SignInForm = () => {
     event.preventDefault();
     await signInWithGooglePopup();
   };
-  const logGitHubUser = async (event) => {
-    event.preventDefault();
-    await signInWithGitHubPopup();
-  };
+  // const logGitHubUser = async (event) => {
+  //   event.preventDefault();
+  //   await signInWithGitHubPopup();
+  // };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
