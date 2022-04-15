@@ -9,11 +9,12 @@ import {
 } from "./checkout.styles";
 
 const Checkout = () => {
-  const { cartItems, cartSubTotal, setIsCartOpen } = useContext(CartContext);
+  const { cartItems, cartSubTotal, isCartOpen, setIsCartOpen } =
+    useContext(CartContext);
 
   useEffect(() => {
     setIsCartOpen(false);
-  }, [setIsCartOpen]);
+  }, []);
 
   return (
     <CheckoutContainer>
