@@ -19,17 +19,6 @@ export const CategoriesProvider = ({ children }) => {
     getCategoriesMap();
   }, []);
 
-  // useEffect(() => {
-  //   signOutUser();
-  //   const unsubscribe = onAuthStateChangedListener((user) => {
-  //     if (user) {
-  //       createUserDocumentFromAuth(user);
-  //     }
-  //     setCurrentUser(user);
-  //   });
-  //   return unsubscribe;
-  // }, []);
-
   return (
     <CategoriesContext.Provider value={value}>
       {children}
