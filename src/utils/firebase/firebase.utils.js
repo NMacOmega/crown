@@ -58,6 +58,12 @@ export const signInWithGitHubPopup = () =>
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
+};
+
 export const db = getFirestore();
 
 export const addCollectionAndDocuments = async (
@@ -114,7 +120,7 @@ export const createUserDocumentFromAuth = async (
     }
   }
 
-  return userDocRef;
+  return userSnapShot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -122,10 +128,10 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
-export const signInWithEmailAndPasswordForm = async (email, password) => {
-  if (!email || !password) return;
-  return await signInWithEmailAndPassword(auth, email, password);
-};
+// export const signInWithEmailAndPasswordForm = async (email, password) => {
+//   if (!email || !password) return;
+//   return await signInWithEmailAndPassword(auth, email, password);
+// };
 
 export const signOutUser = async () => {
   return await signOut(auth);
@@ -134,4 +140,17 @@ export const signOutUser = async () => {
 export const onAuthStateChangedListener = (callback) => {
   if (callback === null) return;
   onAuthStateChanged(auth, callback);
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
 };
